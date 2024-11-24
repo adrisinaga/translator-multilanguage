@@ -1,8 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Language Translator with Groq API
+
+This is a [Next.js](https://nextjs.org) project that provides language translation services using the Groq API.
 
 ## Getting Started
 
-First, run the development server:
+First, set up your environment variables:
+
+1. Copy `.env.example` to `.env`:
+```bash
+cp .env.example .env
+```
+
+2. Add your Groq API key to the `.env` file:
+```bash
+GROQ_API_KEY=your-groq-api-key-here
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -20,6 +34,35 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Deploy on Vercel
+
+1. Push your code to GitHub
+2. Create a new project on [Vercel](https://vercel.com/new)
+3. Connect your GitHub repository
+4. Before deploying, add your environment variables:
+   - Go to your project settings in Vercel
+   - Navigate to the "Environment Variables" tab
+   - Add `GROQ_API_KEY` with your API key value
+5. Deploy the project
+
+Important: Make sure to add your `GROQ_API_KEY` to Vercel's environment variables before deploying!
+
+## Environment Variables
+
+The following environment variables are required:
+
+- `GROQ_API_KEY`: Your Groq API key for translation services
+
+You can obtain a Groq API key from [Groq's Console](https://console.groq.com/).
+
+## Features
+
+- Translation between English and Indonesian
+- Real-time translation using Groq's API
+- Modern, responsive UI
+- Dark mode support
+- Language switching functionality
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -28,9 +71,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
