@@ -4,7 +4,11 @@ import { useState } from "react";
 
 const languages = [
   { value: "en", label: "English" },
-  { value: "id", label: "Indonesian" }
+  { value: "id", label: "Indonesian" },
+  { value: "de", label: "German" },
+  { value: "ja", label: "Japanese" },
+  { value: "it", label: "Italian" },
+  { value: "fr", label: "French" }
 ];
 
 export default function Home() {

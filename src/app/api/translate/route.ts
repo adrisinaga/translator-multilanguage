@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
+// Language mapping for clearer prompts
+const languageNames = {
+  en: "English",
+  id: "Indonesian",
+  de: "German",
+  ja: "Japanese",
+  it: "Italian",
+  fr: "French"
+};
+
 export async function POST(request: NextRequest) {
   try {
     const { text, sourceLanguage, targetLanguage } = await request.json();
@@ -13,7 +23,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const prompt = `Translate the following text from ${sourceLanguage} to ${targetLanguage}. Only respond with the translation, no additional text:
+    const sourceLang = languageNames[sourceLanguage as keyof typeof languageNames] || sourceLanguage;
+    const targetLang = languageNames[targetLanguage as keyof typeof languageNames] || targetLanguage;
+
+    const prompt = `Translate the following text from ${sourceLang} to ${targetLang}. 
+Maintain the original meaning, tone, and cultural context. 
+Provide only the translation, no additional text or explanations:
 
 ${text}`;
 
@@ -28,7 +43,7 @@ ${text}`;
         messages: [
           {
             role: 'system',
-            content: 'You are a professional translator. Provide accurate translations while maintaining the original meaning and context.'
+            content: 'You are a professional translator with expertise in multiple languages. Provide accurate translations while maintaining the original meaning, tone, and cultural nuances.'
           },
           {
             role: 'user',
